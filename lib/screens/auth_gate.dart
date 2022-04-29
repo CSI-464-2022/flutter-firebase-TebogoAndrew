@@ -15,8 +15,17 @@ class AuthGate extends StatelessWidget {
         if (snapshot.hasData) {
           return const HomePage();
         } else {
-          return const SignInScreen(
-            providerConfigs: [
+          return SignInScreen(
+            headerBuilder: (context, constraints, _) {
+              return Padding(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Image.network('https://firebase.flutter.flutter.dev/img/flutterfire_300x.png'),
+                ),
+              );
+            },
+            providerConfigs: const [
               EmailProviderConfiguration(),
             ],
           );
